@@ -85,11 +85,11 @@ void Juego::menu() {
 
             break;
 
-        case 6:
+        case 6: {
 
             int salir;
 
-            cout << "\nQuieres salir del juego?" << endl;
+            cout << "\nQuieres salir?" << endl;
             cout << "1. Si" << endl;
             cout << "2. No" << endl;
 
@@ -99,15 +99,20 @@ void Juego::menu() {
 
                 jugando = false;
 
-                cout << "\n=========== FIN DEL JUEGO ===========" << endl;
+                cout << "\nFIN DEL JUEGO" << endl;
 
-                cout << "Llegaste hasta el dia " << dia << endl;
+                cout << "Llegaste al dia "
+                     << dia
+                     << endl;
 
-                cout << "Dinero final: $" << jugador.getDinero() << endl;
+                cout << "Dinero final: $"
+                     << jugador.getDinero()
+                     << endl;
 
             }
 
             break;
+        }
 
         default:
 
@@ -145,12 +150,14 @@ void Juego::comprarBebidas() {
     cout << "\nQue bebida quieres comprar?: ";
     cin >> opcion;
 
-    cout << "Cuantas quieres comprar?: ";
+    cout << "Cantidad: ";
     cin >> cantidad;
 
     opcion--;
 
-    int costo = bebidas[opcion].getPrecioCompra() * cantidad;
+    int costo =
+        bebidas[opcion].getPrecioCompra()
+        * cantidad;
 
     if(jugador.getDinero() >= costo) {
 
@@ -171,42 +178,60 @@ void Juego::comprarBebidas() {
 
 void Juego::esperarClientes() {
 
-    int vender;
+    int opcion;
 
-    cout << "\nQuieres vender bebidas?" << endl;
+    cout << "\nUn cliente se acerco..." << endl;
+
+    cout << "\nQuieres vender?" << endl;
     cout << "1. Si" << endl;
     cout << "2. No" << endl;
 
-    cin >> vender;
+    cin >> opcion;
 
-    if(vender == 2) {
+    switch(opcion) {
 
-        cout << "\nDecidiste no vender hoy" << endl;
+    case 1: {
 
-        return;
+        int random = rand() % bebidas.size();
 
+        Cliente cliente;
+
+        cliente.setNombre("Cliente");
+
+        Persona* persona = &cliente;
+
+        persona->accion();
+
+        cout << "\nPidio: "
+             << bebidas[random].getNombre()
+             << endl;
+
+        if(bebidas[random].getCantidad() > 0) {
+
+            bebidas[random].vender();
+
+            jugador.vender(
+                bebidas[random].getPrecioVenta()
+            );
+
+        }
+        else {
+
+            cout << "\nNo queda esa bebida" << endl;
+
+        }
+
+        break;
     }
 
-    int random = rand() % bebidas.size();
+    case 2:
 
-    Cliente cliente;
+        cout << "\nEl cliente se fue" << endl;
+        break;
 
-    cliente.setNombre("Cliente");
+    default:
 
-    cliente.accion();
-
-    if(bebidas[random].getCantidad() > 0) {
-
-        cout << "Pidio: " << bebidas[random].getNombre() << endl;
-
-        bebidas[random].vender();
-
-        jugador.vender(bebidas[random].getPrecioVenta());
-
-    }
-    else {
-
-        cout << "\nNo queda esa bebida" << endl;
+        cout << "\nOpcion invalida" << endl;
 
     }
 
@@ -225,30 +250,37 @@ void Juego::eventoRandom() {
 
     case 1:
 
-        cout << "\nUn cliente rico llego al negocio" << endl;
+        cout << "\nUn cliente rico compro mucho" << endl;
 
         jugador.agregarDinero(50);
 
         break;
 
-    case 2:
+    case 2: {
 
         cout << "\nUn bandido aparecio" << endl;
 
+        Bandido bandido;
+
+        Persona* persona = &bandido;
+
+        persona->accion();
+
         if(jugador.getArma()) {
 
-            cout << "Te defendiste del robo" << endl;
+            cout << "\nTe defendiste del robo" << endl;
 
         }
         else {
 
-            cout << "Te robaron $50" << endl;
+            cout << "\nTe robaron $50" << endl;
 
             jugador.comprar(50);
 
         }
 
         break;
+    }
 
     case 3:
 
