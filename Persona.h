@@ -22,7 +22,7 @@ public:
 
     void mostrarInfo();
 
-    void accion();
+    virtual void accion();
 
 };
 
