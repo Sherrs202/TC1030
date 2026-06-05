@@ -15,11 +15,7 @@ public:
 
     Bebida();
 
-    Bebida(string n, int compra, int venta, int cant);
-
-    void vender();
-
-    void comprar(int cant);
+    Bebida(string n, int pc, int pv, int c);
 
     int getCantidad();
 
@@ -28,6 +24,10 @@ public:
     int getPrecioCompra();
 
     string getNombre();
+
+    void comprar(int cant);
+
+    void vender();
 
 };
 
