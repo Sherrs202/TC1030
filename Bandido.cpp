@@ -5,16 +5,12 @@ using namespace std;
 
 Bandido::Bandido() {
 
-}
-
-void Bandido::atacar() {
-
-    cout << "El bandido esta robando" << endl;
+    nombre = "Bandido";
 
 }
 
 void Bandido::accion() {
 
-    atacar();
+    cout << "El bandido intenta robarte." << endl;
 
 }
