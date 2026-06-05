@@ -1,14 +1,20 @@
-#include <ctime>
-#include <cstdlib>
-#include "Juego.h"
+#include "Persona.h"
 
-int main() {
+Persona::Persona() {
 
-    srand(time(0));
+    nombre = "Sin nombre";
+    vida = 100;
 
-    Juego juego;
+}
 
-    juego.menu();
+void Persona::setNombre(string n) {
 
-    return 0;
+    nombre = n;
+
+}
+
+string Persona::getNombre() {
+
+    return nombre;
+
 }
