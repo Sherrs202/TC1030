@@ -14,11 +14,11 @@ class Juego {
 
 private:
 
-    int dia;
-
     Jugador jugador;
 
     vector<Bebida> bebidas;
+
+    int dia;
 
 public:
 
@@ -30,9 +30,7 @@ public:
 
     void comprarBebidas();
 
-    void esperarClientes();
-
-    void eventoRandom();
+    void eventoPersona();
 
 };
 
