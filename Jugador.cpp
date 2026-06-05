@@ -8,26 +8,13 @@ Jugador::Jugador() {
     dinero = 100;
     tieneArma = false;
 
-}
-
-void Jugador::vender(int ganancia) {
-
-    dinero += ganancia;
-
-    cout << "\nVenta realizada" << endl;
-    cout << "Dinero actual: $" << dinero << endl;
-
-}
-
-void Jugador::comprar(int costo) {
-
-    dinero -= costo;
+    nombre = "Jugador";
 
 }
 
 void Jugador::accion() {
 
-    cout << "El jugador esta trabajando" << endl;
+    cout << "El jugador administra el negocio." << endl;
 
 }
 
@@ -37,9 +24,15 @@ int Jugador::getDinero() {
 
 }
 
-void Jugador::agregarDinero(int cantidad) {
+void Jugador::vender(int ganancia) {
 
-    dinero += cantidad;
+    dinero += ganancia;
+
+}
+
+void Jugador::comprar(int costo) {
+
+    dinero -= costo;
 
 }
 
