@@ -1,49 +1,31 @@
-#include <iostream>
-#include "Jugador.h"
+#ifndef JUGADOR_H
+#define JUGADOR_H
 
-using namespace std;
+#include "Persona.h"
 
-Jugador::Jugador() {
+class Jugador : public Persona {
 
-    dinero = 100;
-    tieneArma = false;
+private:
 
-    nombre = "Jugador";
+    int dinero;
+    bool tieneArma;
 
-}
+public:
 
-void Jugador::accion() {
+    Jugador();
 
-    cout << "El jugador administra el negocio." << endl;
+    void accion() override;
 
-}
+    int getDinero();
 
-int Jugador::getDinero() {
+    void vender(int ganancia);
 
-    return dinero;
+    void comprar(int costo);
 
-}
+    bool getArma();
 
-void Jugador::vender(int ganancia) {
+    void conseguirArma();
 
-    dinero += ganancia;
+};
 
-}
-
-void Jugador::comprar(int costo) {
-
-    dinero -= costo;
-
-}
-
-bool Jugador::getArma() {
-
-    return tieneArma;
-
-}
-
-void Jugador::conseguirArma() {
-
-    tieneArma = true;
-
-}
+#endif
