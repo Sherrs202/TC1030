@@ -9,8 +9,6 @@ public:
 
     Cliente();
 
-    void pedir();
-
     void accion();
 
 };
