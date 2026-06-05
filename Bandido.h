@@ -9,9 +9,7 @@ public:
 
     Bandido();
 
-    void atacar();
-
-    void accion();
+    void accion() ;
 
 };
 
