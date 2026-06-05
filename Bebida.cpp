@@ -1,39 +1,15 @@
-#include <iostream>
 #include "Bebida.h"
-
-using namespace std;
 
 Bebida::Bebida() {
 
-    nombre = "Coca Cola";
-    precioCompra = 5;
-    precioVenta = 15;
-    cantidad = 5;
-
 }
 
-Bebida::Bebida(string n, int compra, int venta, int cant) {
+Bebida::Bebida(string n, int pc, int pv, int c) {
 
     nombre = n;
-    precioCompra = compra;
-    precioVenta = venta;
-    cantidad = cant;
-
-}
-
-void Bebida::vender() {
-
-    if(cantidad > 0) {
-
-        cantidad--;
-
-    }
-
-}
-
-void Bebida::comprar(int cant) {
-
-    cantidad += cant;
+    precioCompra = pc;
+    precioVenta = pv;
+    cantidad = c;
 
 }
 
@@ -58,5 +34,21 @@ int Bebida::getPrecioCompra() {
 string Bebida::getNombre() {
 
     return nombre;
+
+}
+
+void Bebida::comprar(int cant) {
+
+    cantidad += cant;
+
+}
+
+void Bebida::vender() {
+
+    if(cantidad > 0) {
+
+        cantidad--;
+
+    }
 
 }
