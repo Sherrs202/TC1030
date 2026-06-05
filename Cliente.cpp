@@ -5,16 +5,12 @@ using namespace std;
 
 Cliente::Cliente() {
 
-}
-
-void Cliente::pedir() {
-
-    cout << nombre << " pidio una bebida" << endl;
+    nombre = "Cliente";
 
 }
 
 void Cliente::accion() {
 
-    pedir();
+    cout << "El cliente quiere comprar una bebida." << endl;
 
 }
