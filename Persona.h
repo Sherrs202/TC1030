@@ -20,9 +20,7 @@ public:
 
     string getNombre();
 
-    void mostrarInfo();
-
-    virtual void accion();
+    virtual void accion() = 0;
 
 };
 
