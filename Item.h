@@ -16,8 +16,6 @@ public:
 
     Item();
 
-    void usar();
-
 };
 
 #endif
