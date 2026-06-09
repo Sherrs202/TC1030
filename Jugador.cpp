@@ -1,31 +1,30 @@
-#ifndef JUGADOR_H
-#define JUGADOR_H
+#include "Jugador.h"
 
-#include "Persona.h"
+Jugador::Jugador() {
+    dinero = 100;
+    tieneArma = false;
+}
 
-class Jugador : public Persona {
+void Jugador::accion() {
+    cout << "El jugador administra la taberna." << endl;
+}
 
-private:
+int Jugador::getDinero() {
+    return dinero;
+}
 
-    int dinero;
-    bool tieneArma;
+void Jugador::vender(int ganancia) {
+    dinero += ganancia;
+}
 
-public:
+void Jugador::comprar(int costo) {
+    dinero -= costo;
+}
 
-    Jugador();
+bool Jugador::getArma() {
+    return tieneArma;
+}
 
-    void accion() override;
-
-    int getDinero();
-
-    void vender(int ganancia);
-
-    void comprar(int costo);
-
-    bool getArma();
-
-    void conseguirArma();
-
-};
-
-#endif
+void Jugador::conseguirArma() {
+    tieneArma = true;
+}
