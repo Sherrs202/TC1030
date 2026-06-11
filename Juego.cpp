@@ -5,10 +5,12 @@
 
 using namespace std;
 
+// Constructor por default de la clase Juego
 Juego::Juego() {
 
     dia = 1;
 
+    // Agrega bebidas iniciales al inventario
     bebidas.push_back(
         Bebida("Coca Cola",5,15,5)
     );
@@ -23,6 +25,7 @@ Juego::Juego() {
 
 }
 
+// Muestra las bebidas disponibles en el inventario con su cantidad
 void Juego::mostrarInventario() {
 
     cout << "\nInventario\n";
@@ -41,6 +44,12 @@ void Juego::mostrarInventario() {
 
 }
 
+/**
+ * Permite comprar bebidas para aumentar el inventario.
+ *
+ * Verifica que el jugador tenga suficiente dinero antes
+ * de realizar la compra.
+ */
 void Juego::comprarBebidas() {
 
     int opcion;
@@ -77,15 +86,24 @@ void Juego::comprarBebidas() {
 
 }
 
+/**
+ * Genera un evento aleatorio durante el día.
+ *
+ * Puede aparecer un cliente para comprar bebidas
+ * o un bandido que intentará robar al jugador.
+ */
 void Juego::eventoPersona() {
 
     Cliente cliente;
     Bandido bandido;
 
+    // Aplica polimorfismo para seleccionar aleatoriamente entre un cliente o un bandido
     Persona* persona;
 
+    // Seleciona aleatoriamente el tipo de evento
     int tipo = rand() % 2;
 
+    // Evento con cliente
     if(tipo == 0) {
 
         persona = &cliente;
@@ -101,7 +119,7 @@ void Juego::eventoPersona() {
 
     persona->accion();
 
-    // CLIENTE
+    // Evento con cliente
     if(tipo == 0) {
 
         int opcion;
@@ -114,12 +132,14 @@ void Juego::eventoPersona() {
 
         if(opcion == 1) {
 
+            // Selecciona una bebida aleatoria del inventario para el cliente
             int bebida = rand() % bebidas.size();
 
             cout << "\nEl cliente pidio: "
                  << bebidas[bebida].getNombre()
                  << endl;
 
+                 // Verifica que haya suficiente cantidad de la bebida para vender
             if(bebidas[bebida].getCantidad() > 0) {
 
                 bebidas[bebida].vender();
@@ -150,7 +170,7 @@ void Juego::eventoPersona() {
 
     }
 
-    // BANDIDO
+    // Envento de bandido
     else {
 
         int opcion;
@@ -163,6 +183,7 @@ void Juego::eventoPersona() {
 
         if(opcion == 1) {
 
+            // Verifica si el jugador tiene un arma para defenderse
             if(jugador.getArma()) {
 
                 cout << "\nSacaste tu arma." << endl;
@@ -194,6 +215,8 @@ void Juego::eventoPersona() {
     }
 
 }
+
+// Despliega el menu principal del juego y maneja las opciones seleccionadas por el jugador
 void Juego::menu() {
 
     int opcion;
@@ -239,6 +262,7 @@ void Juego::menu() {
 
         case 4:
 
+            // Compra un arma si hay dinero suficiente
             if(jugador.getDinero() >= 100) {
 
                 jugador.comprar(100);
@@ -257,7 +281,8 @@ void Juego::menu() {
             break;
 
         case 5:
-
+            
+            // Anvanza al siguiente dia
             dia++;
 
             cout << "Terminando dia...\n";
